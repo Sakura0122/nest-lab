@@ -1,18 +1,11 @@
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module.js'
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+import { createLogger } from './core/logger.js'
+import { setupSwagger } from './core/swagger.js'
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule)
-  const config = new DocumentBuilder()
-    .setTitle('nest-lab')
-    .setDescription('学习nest')
-    .setVersion('1.0')
-    .build()
-
-  const document = SwaggerModule.createDocument(app, config)
-
-  SwaggerModule.setup('api-docs', app, document)
+  const app = await NestFactory.create(AppModule, { logger: createLogger() })
+  setupSwagger(app)
   await app.listen(process.env.PORT ?? 3000)
 }
 await bootstrap()
