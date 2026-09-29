@@ -1,11 +1,17 @@
 {
   "name": "nest-lab",
-  "private": "true",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "pnpm --parallel --filter api --filter web run dev",
+    "dev:api": "pnpm --filter api run dev",
+    "dev:web": "pnpm --filter web run dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "pnpm --filter api --filter web run lint",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check ."
   },
   "keywords": [],
   "author": "",
@@ -18,5 +24,10 @@
     }
   },
   "packageManager": "pnpm@11.24.0",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "oxfmt": "^0.71.0",
+    "oxlint": "^1.81.0",
+    "oxlint-tsgolint": "^7.0.2001"
+  }
 }
