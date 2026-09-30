@@ -6,6 +6,7 @@ export function setupSwagger(app: INestApplication) {
     .setTitle('nest-lab')
     .setDescription('学习nest')
     .setVersion('1.0')
+    .addBearerAuth()
     .build()
 
   const document = SwaggerModule.createDocument(app, config)

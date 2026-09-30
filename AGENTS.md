@@ -40,7 +40,6 @@
 - 优先使用POST请求，有特殊需求时主动提出原因。
 - 涉及异步调用的接口使用 `async`，明确声明 `Promise<Result<具体响应类型>>`；同步方法不为形式统一而添加 `async`。
 - 所有业务接口使用 `src/common/result.ts` 中的 `Result<T>`，通过 `Result.success` 返回成功结果，不直接返回数据库记录或自行拼接响应结构。
-- 所有业务接口统一返回 HTTP 200，通过 `Result.code` 表达业务处理结果。。
 - 业务错误抛出已有 `BusinessException`，错误码使用 `ResultCodeEnum` 中定义的值；复用全局异常过滤器，不在接口中吞掉异常或重复包装错误响应。
 - 分页复用 `PageRequest`、`PageResult<T>` 及现有字段命名；补充所需校验和文档，不另起一套分页协议。
 

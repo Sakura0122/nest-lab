@@ -2,7 +2,20 @@
   "name": "shared",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "exports": {
+    "./page": {
+      "types": "./src/page.ts"
+    },
+    "./user": {
+      "types": "./src/user.ts"
+    },
+    "./role": {
+      "types": "./src/role.ts"
+    },
+    "./auth": {
+      "types": "./src/auth.ts"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
